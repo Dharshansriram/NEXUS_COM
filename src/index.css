@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 30% 5%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 25% 10%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 200 100% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 200 100% 50%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --info: 200 100% 50%;
+    --info-foreground: 0 0% 100%;
+    --glow: 200 100% 55%;
+    --glow-accent: 280 80% 60%;
+    --glass: 0 0% 100% / 0.08;
+    --glass-border: 0 0% 100% / 0.12;
+  }
+
+  .dark {
+    --background: 228 30% 4%;
+    --foreground: 210 20% 92%;
+    --card: 228 25% 7%;
+    --card-foreground: 210 20% 92%;
+    --popover: 228 25% 7%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 30% 5%;
+    --secondary: 228 22% 11%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 228 22% 11%;
+    --muted-foreground: 220 15% 50%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 228 18% 14%;
+    --input: 228 18% 14%;
+    --ring: 200 100% 50%;
+    --sidebar-background: 228 30% 6%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary-foreground: 220 30% 5%;
+    --sidebar-accent: 228 22% 11%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 228 18% 14%;
+    --sidebar-ring: 200 100% 50%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --info: 200 100% 50%;
+    --info-foreground: 0 0% 100%;
+    --glow: 200 100% 55%;
+    --glow-accent: 280 80% 60%;
+    --glass: 0 0% 100% / 0.04;
+    --glass-border: 0 0% 100% / 0.08;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground dark;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-strong {
+    background: hsl(var(--card));
+    backdrop-filter: blur(40px) saturate(1.8);
+    -webkit-backdrop-filter: blur(40px) saturate(1.8);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(var(--glow) / 0.15), 
+                0 0 20px -5px hsl(var(--glow) / 0.2),
+                inset 0 0 20px -10px hsl(var(--glow) / 0.05);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px hsl(var(--glow) / 0.5);
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =====================
+   MOBILE RESPONSIVE
+   ===================== */
+
+/* Tighten container padding on small screens */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* GlassCard smaller padding on mobile */
+  .glass-strong.rounded-xl.p-5 {
+    padding: 1rem;
+  }
+
+  /* Chat bubbles: allow more width on small screens */
+  .max-w-\[80\%\] {
+    max-width: 90%;
+  }
+
+  /* Prevent horizontal overflow on all pages */
+  #root, body {
+    overflow-x: hidden;
+  }
+}
+
+/* Advisor page: textarea and input area */
+@media (max-width: 640px) {
+  /* Starter prompt chips: wrap to 2 columns */
+  .starter-prompts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Bottom input bar: stack send button below textarea */
+  .advisor-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .advisor-input-row button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Report / Intelligence pages: make action selects full-width */
+@media (max-width: 640px) {
+  /* Ensure selects/inputs span full width inside GlassCard grids */
+  .grid.grid-cols-1 > * {
+    width: 100%;
+  }
+
+  /* Score meters: looser heading */
+  .text-4xl.font-black.font-mono {
+    font-size: 2rem;
+  }
+
+  /* Page headers: reduce size on mobile */
+  h1.text-2xl {
+    font-size: 1.25rem;
+  }
+}
+
+/* Laboratory: item list cards horizontal scroll on mobile */
+@media (max-width: 768px) {
+  /* Comparison items list: allow scrolling rather than overflow */
+  .lab-items-list {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+}
+
+/* Community page: new post form stacks vertically */
+@media (max-width: 640px) {
+  .community-post-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+/* Index hero: tighten pt/pb on mobile */
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Footer flex: stack on very small screens */
+  .footer-row {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+}

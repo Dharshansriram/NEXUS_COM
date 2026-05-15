@@ -1,0 +1,154 @@
+# Quick Fix Checklist - Component Compass npm Error
+
+## The Problem
+```
+npm error code ETARGET
+npm error notarget No matching version found for @radix-ui/react-dropdown-menu@^2.2.15.
+```
+
+## Quick Solution (5 minutes)
+
+### Option A: Automated (Easiest) ✓ RECOMMENDED
+1. Open PowerShell **as Administrator** (Right-click → Run as Administrator)
+2. Navigate to your project folder
+3. Run: `.\fix-installation.ps1`
+4. Wait for completion ✓
+
+### Option B: Manual Fix (10 minutes)
+
+1. **Open PowerShell as Administrator**
+
+2. **Go to your project:**
+   ```powershell
+   cd C:\Users\Dharshansriram\Downloads\component-compass-main\component-compass-main
+   ```
+
+3. **Clean everything:**
+   ```powershell
+   rm -r node_modules -Force
+   rm package-lock.json
+   npm cache clean --force
+   ```
+
+4. **Fix package.json** - Open with Notepad and change:
+   - Line 30: From `"@radix-ui/react-dropdown-menu": "^2.2.15",` 
+   - To: `"@radix-ui/react-dropdown-menu": "^2.1.2",`
+   
+   - Line 28: From `"@radix-ui/react-context-menu": "^2.2.15",`
+   - To: `"@radix-ui/react-context-menu": "^2.1.5",`
+
+5. **Install again:**
+   ```powershell
+   npm install
+   ```
+
+6. **If still fails, use legacy mode:**
+   ```powershell
+   npm install --legacy-peer-deps --force
+   ```
+
+---
+
+## What These Versions Mean
+
+| Term | Meaning |
+|------|---------|
+| `^2.1.2` | Can use any version from 2.1.2 to <3.0.0 |
+| `2.2.15` | This exact version (doesn't exist on npm) |
+| `~2.1.2` | Can use 2.1.x versions only |
+
+---
+
+## Files Included
+
+| File | Purpose |
+|------|---------|
+| `FIX_GUIDE.md` | Comprehensive troubleshooting guide |
+| `package-CORRECTED.json` | Pre-fixed package.json (copy to replace yours) |
+| `fix-installation.ps1` | Automated PowerShell script |
+| `QUICK_FIX.txt` | This file |
+
+---
+
+## Verify It Works
+
+After installation, check if these commands work:
+```powershell
+npm list @radix-ui/react-dropdown-menu
+# Should show version 2.1.2 or similar
+
+npm run dev
+# Should start development server
+```
+
+---
+
+## TypeScript/JSX Info
+
+**Good news:** Your project is already using **JSX correctly**!
+- Using `jsconfig.json` ✓ (not TypeScript)
+- Files already named `*.jsx` ✓
+- **No conversion needed!**
+
+---
+
+## Still Having Issues?
+
+### Check these first:
+```powershell
+# Is Node.js installed?
+node --version
+
+# Is npm updated?
+npm --version
+npm install -g npm@latest
+
+# Network issues?
+npm config set registry https://registry.npmjs.org/
+
+# Check detailed error:
+type npm-debug.log
+```
+
+### Nuclear option (last resort):
+```powershell
+# Uninstall and reinstall Node.js completely
+# Then from project folder:
+npm install --legacy-peer-deps --force --verbose
+```
+
+---
+
+## Success Indicators ✓
+
+After running the fix:
+- [ ] No red error messages in console
+- [ ] `npm list @radix-ui/react-dropdown-menu` shows version 2.1.x
+- [ ] `npm run dev` starts without errors
+- [ ] Browser opens to http://localhost:5173 or http://localhost:3000
+- [ ] No "module not found" errors
+
+---
+
+## Common Issues & Fixes
+
+| Problem | Solution |
+|---------|----------|
+| "Permission denied" | Run PowerShell as Administrator |
+| "npm: command not found" | Reinstall Node.js |
+| Port already in use | Different port or kill process |
+| Still shows 2.2.15 | Delete node_modules again + npm cache clean |
+| CORS errors | Restart both dev:web and dev:server |
+
+---
+
+## Need More Details?
+
+- **Full guide:** Read `FIX_GUIDE.md`
+- **Just install:** Use the `fix-installation.ps1` script
+- **Copy config:** Use `package-CORRECTED.json` as-is
+
+---
+
+**Version Date:** May 14, 2026  
+**Tested On:** Node.js 18+, npm 9+, Windows 10/11
